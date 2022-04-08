@@ -9,47 +9,45 @@ Eclipse 4.22.0
 
 ## Descripton
 > #### 실행 화면
-학생 입력
+1. 학생 입력<br>
 ![image](https://user-images.githubusercontent.com/71351412/162450162-c6ca3b2d-736f-4d17-b0b2-bdc443e3f251.png)
-<br>
-학생 전체 조회
+<br><br>
+2. 학생 전체 조회<br>
 ![image](https://user-images.githubusercontent.com/71351412/162450546-5b356ca8-d98d-4bdc-b556-0937b871f44a.png)
-<br>
-학생 검색 조회
+<br><br>
+3. 학생 검색 조회<br>
 ![image](https://user-images.githubusercontent.com/71351412/162451355-a72bb8bf-ce75-44e2-b1b1-e962885c15d7.png)
-<br>
-학생 정보 삭제
+<br><br>
+4. 학생 정보 삭제<br>
 ![image](https://user-images.githubusercontent.com/71351412/162451607-71112417-3226-48e7-ba37-22833a4fd77b.png)
-<br>
-학생 성적 수정
+<br><br>
+5. 학생 성적 수정<br>
 ![image](https://user-images.githubusercontent.com/71351412/162451951-7f7f734c-2f2e-48ec-a166-a89b9e0ededf.png)
-<br>
-총점순으로 학생 정렬
+<br><br>
+6. 총점순으로 학생 정렬<br>
 ![image](https://user-images.githubusercontent.com/71351412/162452028-f2961e74-eb1d-4f8b-8317-1d9596381da1.png)
 <br><br>
 
 > #### 클래스
-DBUtility : mySQL 데이터베이스와 연결
-DBController : 데이터베이스 관리
-StudentModel : 데이터(와 관련된 일을 처리하는) 클래스
-StudentMain : 실행 클래스
+DBUtility : mySQL 데이터베이스와 연결<br>
+DBController : 자바에서 쿼리문을 전달하여 데이터베이스 관리<br>
+StudentModel : 데이터(와 관련된 일을 처리하는) 클래스<br>
+StudentMain : 실행 클래스<br>
 <br>
 
 > #### 패턴 확인
 요청하는 데이터의 형식에 어긋나는 값을 받게 되는 경우를 대비해 패턴 설정
 
-private static boolean patternCheck(String patternData, int patternType) {
-	String filter = null;
-	switch(patternType) {
-		case NAMEPATTERN: filter = "^[가-힣]{2,5}$"; break;
-		case IDPATTERN: filter = "([0-9]{10})"; break;
-		case SCOREPATTERN: filter = "([0-9]{1,3})"; break;
-	}
-		
-	Pattern pattern = Pattern.compile(filter);
-	Matcher matcher = pattern.matcher(patternData);
-		
-	return matcher.matches();
+	private static boolean patternCheck(String patternData, int patternType) {
+		String filter = null;
+		switch(patternType) {
+			case NAMEPATTERN: filter = "^[가-힣]{2,5}$"; break;
+			case IDPATTERN: filter = "([0-9]{10})"; break;
+			case SCOREPATTERN: filter = "([0-9]{1,3})"; break;
+		}
+		Pattern pattern = Pattern.compile(filter);
+		Matcher matcher = pattern.matcher(patternData);	
+		return matcher.matches();
 	}
 
 <br>
@@ -62,7 +60,7 @@ Connection con = (Connection) DriverManager.getConnection(URL, userID, userPassw
 <br>
 
 > #### 자바에서 DB로 쿼리 전달
-SQL 질의문을 전달하기 위한 PreparedStatement 인터페이스 사용
+SQL 질의문을 전달하기 위한 PreparedStatement 인터페이스 사용<br>
 DBController.java
 <pre>
 String insertQuery = "insert into studentTBL values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -75,6 +73,7 @@ try {
 <br>
 
 > #### executeupdate 와 executequery
+DBController.java<br>
 select 구문을 수행할 때 executequery 사용
 <pre>
 String selectQuery = "select * from studentdb.studenttbl";
